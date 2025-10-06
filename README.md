@@ -1,70 +1,182 @@
-# Getting Started with Create React App
+# 🏦 Cajero Bancario React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sistema de cajero bancario desarrollado en React con conexión a Supabase.
 
-## Available Scripts
+## 🚀 Características
 
-In the project directory, you can run:
+- ✅ **Autenticación segura** con número de cuenta y PIN
+- 💰 **Gestión de saldo** en tiempo real
+- 📥 **Depósitos** con validación de montos
+- 📤 **Retiros** con verificación de saldo
+- � **Historial de operaciones** completo
+- � **Gestión de usuarios** con edición de datos
+- 📱 **Diseño responsive** para móviles y desktop
+- 🎨 **Interfaz moderna** estilo BCP minimalista
 
-### `npm start`
+## 🛠️ Instalación
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Instalar dependencias
+```bash
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Configurar variables de entorno
+```bash
+# Copia el archivo de ejemplo
+cp .env.example .env
 
-### `npm test`
+# Edita el archivo .env con tus credenciales de Supabase
+VITE_SUPABASE_URL=tu_url_de_supabase
+VITE_SUPABASE_ANON_KEY=tu_clave_anonima_de_supabase
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+⚠️ **IMPORTANTE**: 
+- Nunca subas el archivo `.env` al repositorio
+- Las credenciales están protegidas usando variables de entorno
+- El archivo `.env` está incluido en `.gitignore`
+```
 
-### `npm run build`
+### 2. Configurar Supabase
+1. Ve a tu panel de Supabase: https://hhlomroigntrwbvntwbo.supabase.co
+2. Abre el **SQL Editor**
+3. Ejecuta el contenido del archivo `supabase-functions.sql`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. Ejecutar la aplicación
+```bash
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+La aplicación se abrirá en: http://localhost:3000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔐 Datos de Prueba
 
-### `npm run eject`
+### Cuenta 1:
+- **Número de cuenta:** 12345678901234
+- **PIN:** 1234
+- **Titular:** Juan Pérez García
+- **Saldo inicial:** S/ 1,000.00
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Cuenta 2:
+- **Número de cuenta:** 98765432109876
+- **PIN:** 5678
+- **Titular:** María González López
+- **Saldo inicial:** S/ 500.00
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📱 Uso de la Aplicación
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Iniciar Sesión
+1. Ingresa tu número de cuenta (14 dígitos)
+2. Ingresa tu PIN (4 dígitos)
+3. Haz clic en "Ingresar"
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Operaciones Disponibles
 
-## Learn More
+#### 💰 Depósito
+- Selecciona "Depósito" en el dashboard
+- Ingresa el monto a depositar
+- Confirma la operación
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 💸 Retiro
+- Selecciona "Retiro" en el dashboard
+- Ingresa el monto a retirar
+- El sistema verificará que tengas saldo suficiente
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 🔄 Transferencia
+- Selecciona "Transferencia" en el dashboard
+- Ingresa el DNI del destinatario (8 dígitos)
+- Busca al titular
+- Ingresa el monto a transferir
+- Confirma la operación
 
-### Code Splitting
+#### 📊 Historial
+- Selecciona "Historial" para ver todas tus operaciones
+- Se muestran ordenadas por fecha (más recientes primero)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🏗️ Estructura del Proyecto
 
-### Analyzing the Bundle Size
+```
+cajero-bancario-react/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Login.jsx          # Componente de autenticación
+│   │   └── Dashboard.jsx      # Panel principal y operaciones
+│   ├── services/
+│   │   ├── supabase.js        # Configuración de Supabase
+│   │   └── bankService.js     # Servicios bancarios
+│   ├── App.jsx                # Componente principal
+│   ├── App.css                # Estilos principales
+│   └── main.jsx               # Punto de entrada
+├── package.json
+├── vite.config.js
+├── index.html
+├── supabase-functions.sql     # Funciones SQL para Supabase
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔧 Tecnologías Utilizadas
 
-### Making a Progressive Web App
+- **React 18** - Framework de JavaScript
+- **Vite** - Herramienta de desarrollo
+- **Supabase** - Base de datos PostgreSQL en la nube
+- **Lucide React** - Iconos modernos
+- **React Hot Toast** - Notificaciones elegantes
+- **CSS3** - Estilos con gradientes y animaciones
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🗄️ Base de Datos
 
-### Advanced Configuration
+### Tablas Principales:
+- `titular` - Información de los titulares
+- `cuenta_bancaria` - Cuentas bancarias
+- `operacion` - Registro de operaciones
+- `deposito` - Depósitos realizados
+- `retiro` - Retiros realizados
+- `transferencia` - Transferencias entre cuentas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Funciones SQL:
+- `actualizar_saldo_deposito()` - Actualiza saldo tras depósito
+- `actualizar_saldo_retiro()` - Actualiza saldo tras retiro
+- `actualizar_saldo_transferencia()` - Actualiza saldos tras transferencia
 
-### Deployment
+## 🔒 Seguridad
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Validación de entrada en el frontend
+- Verificación de saldos antes de operaciones
+- Transacciones atómicas en la base de datos
+- Autenticación mediante número de cuenta y PIN
+- Conexión segura con Supabase
 
-### `npm run build` fails to minify
+## 📱 Responsive Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La aplicación está optimizada para:
+- 📱 **Móviles** (< 480px)
+- 📱 **Tablets** (480px - 768px)
+- 💻 **Desktop** (> 768px)
+
+## 🚨 Notas Importantes
+
+1. **Ejecuta las funciones SQL** en Supabase antes de usar la aplicación
+2. Las credenciales de Supabase ya están configuradas
+3. Los datos de prueba se insertan automáticamente al ejecutar el SQL
+4. Todas las operaciones son en tiempo real
+5. El historial se actualiza automáticamente
+
+## 📞 Soporte
+
+Si tienes problemas:
+1. Verifica que Supabase esté funcionando
+2. Asegúrate de haber ejecutado las funciones SQL
+3. Revisa la consola del navegador para errores
+4. Verifica tu conexión a internet
+
+## 🎯 Próximas Características
+
+- 📧 Notificaciones por email
+- 🔐 Autenticación de dos factores
+- 📄 Generación de reportes PDF
+- 🌙 Modo oscuro
+- 🌍 Múltiples idiomas
+
+---
+
+**¡Disfruta usando tu cajero bancario virtual! 🏦✨**
