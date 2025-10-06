@@ -3,7 +3,7 @@ import { CreditCard, Lock, Eye, EyeOff, Shield } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { BankService } from '../services/bankService.js'
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, onShowRegister }) => {
   const [nroCuenta, setNroCuenta] = useState('')
   const [pin, setPin] = useState('')
   const [mostrarPin, setMostrarPin] = useState(false)
@@ -247,9 +247,21 @@ const Login = ({ onLogin }) => {
 
             {/* Footer de seguridad */}
             <div className="mt-6 pt-6 border-t border-gray-200">
-              <div className="flex items-center justify-center gap-2 text-gray-500">
+              <div className="flex items-center justify-center gap-2 text-gray-500 mb-4">
                 <Shield size={16} />
                 <span className="text-sm">Conexión segura SSL</span>
+              </div>
+              
+              <div className="text-center">
+                <p className="text-sm text-gray-600 mb-3">
+                  ¿No tienes una cuenta?
+                </p>
+                <button
+                  onClick={onShowRegister}
+                  className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors underline"
+                >
+                  Crear nueva cuenta bancaria
+                </button>
               </div>
             </div>
           </div>
